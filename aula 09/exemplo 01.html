@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>aula 09 exemplo 01</title>
+</head>
+<body>
+    <form name="cadastro">
+        <div><label>nome:<input type="text" name="nome" /></label></div>
+        <div><label>idade:<input type="number" name="idade" /></label></div>
+        <div><label>cidade:<input type="text" name="cidade" /></label></div>
+        <input type="submit" />
+        <input type="reset" />
+    </form>
+    <table border="1">
+    <tr>
+        <td>Nome</td>
+        <td>Idade</td>
+        <td>cidade</td>
+    </tr>
+    <tr>
+        <td>guima</td>
+        <td>20</td>
+        <td>japoronga</td>
+    </tr>
+    <tr>
+        <td>god </td>
+        <td>21</td>
+        <td>jf</td>
+    </tr>
+    <tr>
+        <td>vraux</td>
+        <td>22</td>
+        <td>rj</td>
+    </tr>
+    </table>
+    <script>
+        var formCadastro =document.forms.cadastro;
+        var corpoTabela = document.querySelector("tbody");
+
+        formCadastro.addEventListener("submit",processacadastro);
+
+    function processacadastro(e){
+        e.preventDefault();
+        var nome = formCadastro.nome.value;
+        var idade = Number(formCadastro.idade.value);
+        var cidade = formCadastro.cidade.value;
+        jogaLinhaNaTabela(nome, idade, cidade);
+        formCadastro.reset();
+        formCadastro.nome.focus();
+    }
+    function jogaLinhaNaTabela(nome, idade,cidade){
+        var tdNome = document.createElement("td");
+        tdNome.textContent = nome;
+        var tdidade = document.createElement("td");
+        tdidade.textContent = idade;
+        var tdcidade = document.createElement("td");
+        tdcidade.textContent = cidade;
+        var trLinha = document.createElement("tr");
+        trLinha.appendChild(tdNome);
+        trLinha.appendChild(tdidade);
+        trLinha.appendChild(tdcidade);
+        corpoTabela.appendChild(trLinha);
+    }    
+    </script>
+</body>
+</html>
